@@ -1,0 +1,39 @@
+<div id="content_detail" class="ui-corner-all">
+<h1 class="title"><%= t('page.listing', :model => t('activerecord.models.report_template')) -%></h1>
+<div id="content_list">
+
+<table class="index">
+  <tr>
+    <th><%= t('activerecord.attributes.report_template.name') -%></th>
+    <th><%= t('activerecord.attributes.report_template.display_name') -%></th>
+    <th><%= t('activerecord.attributes.report_template.filename') -%></th>
+    <th></th>
+  </tr>
+
+<%- @report_templates.each do |report_template| -%>
+  <tr class="line<%= cycle("0", "1") -%>">
+    <td><%= link_to report_template.name, report_template -%></td>
+    <td><%= link_to report_template.display_name.localize, report_template -%></td>
+    <td><%= report_template.filename -%></td>
+    <td>
+      <%- if can? :update, report_template -%>
+        <%= link_to t('page.edit'), edit_report_template_path(report_template) -%>
+      <% end %>
+      <%- if can? :destroy, report_template -%>
+        <%= link_to t('page.destroy'), report_template_path(report_template), :confirm => t('page.are_you_sure'), :method => :delete -%>
+      <%- end -%>
+    </td>
+  </tr>
+<%- end -%>
+</table>
+
+</div>
+</div>
+
+<div id="submenu" class="ui-corner-all">
+  <ul>
+    <%- if can? :create, ReportTemplate -%>
+      <li><%= link_to t('page.new', :model => t('activerecord.models.report_template')), new_report_template_path -%></li>
+    <%- end -%>
+  </ul>
+</div>
