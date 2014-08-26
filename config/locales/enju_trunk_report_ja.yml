@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      report_template: 帳票テンプレート
+    attributes:
+      report_template:
+        name: 名前
+        display_name: 表示名
+        filename: ファイル名
+        body: 本文
+        header: ヘッダ
+        footer: フッタ
+        title: タイトル
+        message: メッセージ
+        size: サイズ

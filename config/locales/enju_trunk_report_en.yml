@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    models:
+      report_template: ReportTemplate
+    attributes:
+      report_template:
+        name: Name
+        display_name: Display name
+        filename: Filename
+        body: Body
+        header: Header
+        footer: Footer
+        title: Title
+        message: Message
+        size: Size
