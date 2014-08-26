@@ -1,0 +1,37 @@
+<% 
+reminder_body = <<"EOS"
+<div id='left'\><%= @user.agent.full_name %\>様</div\>
+<div id='title'\><%= @title %\></div\>
+<div id='message'\><%= @message %\></div\>
+<table\>
+<%- @reminder_lists.each do |r| %\>
+  <tr\>
+    <th\><%= I18n.t('activerecord.attributes.manifestation.original_title') %\></th\>
+    <th\><%= I18n.t('activerecord.attributes.checkout.due_date') %\></th\>
+    <th\><%= I18n.t('activerecord.attributes.item.call_number') %\></th\>
+    <th\><%= I18n.t('activerecord.attributes.item.location_category') %\></th\>
+  </tr\>
+  <tr\>
+    <td\><%= r.checkout.item.manifestation.original_title %\></td\>
+    <td\><%= r.checkout.due_date.strftime('%Y-%m-%d') %\></td\>
+    <td\><%= r.checkout.item.call_number %\></td\>
+    <td\><%= r.checkout.item.location_category.try(:keyname) %\></td\>
+  </tr\>
+<%- end -%\>
+</table\>
+EOS
+%>
+
+report_template_00001:
+  name: reminder
+  display_name: 督促状
+  filename: 督促状
+  size: A4
+  header: "[date]"
+  footer: 
+  title: 督促状
+  message: "あなた現在借りている下記の図書館資料は返却期限を過ぎています.\n
+あなたの次にその資料を利用したい友達が非常に不便をしています。図書館の資料はみんなのものです。至急返却してください。\n
+なお、すでに返した、あるいは見つからないなどの場合はすぐに図書館までお知らせください。\n
+一ヶ月を過ぎて資料を返却した場合は、ペナルティとして資料代金を支払っていただきます。\n"
+  body: "<%= reminder_body %>"
