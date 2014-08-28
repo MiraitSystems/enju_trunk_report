@@ -4,6 +4,11 @@ class CreateEnjuTrunkReportReportTemplates < ActiveRecord::Migration
       t.string :name
       t.string :display_name
       t.string :filename
+      t.string :size
+      t.string :header
+      t.string :footer
+      t.string :title
+      t.text :message
       t.text :body
       t.timestamps
     end
